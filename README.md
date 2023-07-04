@@ -51,3 +51,11 @@ cat /etc/hosts | tail -n 1
 
 
 ```
+
+## Create a Kubernetes TLS Ingress from scratch in Minikube
+
+```bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=ticket-koi.com"
+base64 -w 0 ./tls.crt
+base64 -w 0 ./tls.key
+```
