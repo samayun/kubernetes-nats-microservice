@@ -22,11 +22,11 @@ kind: Service
 metadata:
   name: client-srv
 spec:
-  type: NodePort
+  # type: NodePort
   selector:
     app: client
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 30100
+      # nodePort: 30100
