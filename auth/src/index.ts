@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 import { app } from './app';
+import { User } from './models/user';
 
 const start = async () => {
   console.log('Starting up........');
@@ -23,7 +24,8 @@ const start = async () => {
     console.error(err);
   }
 
-  app.listen(3000, () => {
+  app.listen(3000, async () => {
+    console.log({ users: await User.find({}) });
     console.log('Listening on port 3000!!!!!!!!');
   });
 };

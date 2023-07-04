@@ -12,10 +12,7 @@ router.post(
   '/api/users/signin',
   [
     body('email').isEmail().withMessage('Email must be valid'),
-    body('password')
-      .trim()
-      .notEmpty()
-      .withMessage('You must supply a password'),
+    body('password').trim().notEmpty().withMessage('You must supply a password'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
@@ -26,10 +23,7 @@ router.post(
       throw new BadRequestError('Invalid credentials');
     }
 
-    const passwordsMatch = await Password.compare(
-      existingUser.password,
-      password
-    );
+    const passwordsMatch = await Password.compare(existingUser.password, password);
     if (!passwordsMatch) {
       throw new BadRequestError('Invalid Credentials');
     }
@@ -40,7 +34,7 @@ router.post(
         id: existingUser.id,
         email: existingUser.email,
       },
-      process.env.JWT_KEY!
+      process.env.JWT_KEY!,
     );
 
     // Store it on session object
@@ -49,7 +43,7 @@ router.post(
     };
 
     res.status(200).send(existingUser);
-  }
+  },
 );
 
 export { router as signinRouter };
