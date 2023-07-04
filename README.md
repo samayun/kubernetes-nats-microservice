@@ -5,13 +5,20 @@
 #### STARTING
 
 ```
-kubectl apply -f ./infra/k8s
-kubectl apply -f ./infra/k8s-dev
+kubectl apply -f ./infra/k8s && kubectl apply -f ./infra/k8s-dev
 ```
 
 #### Delete
 
 ```
-kubectl delete -f ./infra/k8s
-kubectl delete -f ./infra/k8s-dev
+kubectl delete -f ./infra/k8s && kubectl delete -f ./infra/k8s-dev
+```
+
+# RUN LOCALLY
+
+```bash
+
+docker build -t samayunmc/client ./client && docker run samayunmc/client
+
+
 ```
